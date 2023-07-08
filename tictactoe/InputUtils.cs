@@ -6,16 +6,30 @@ public static class InputUtils
     {
         Console.WriteLine(prompt);
         string userInput = Console.ReadLine() ?? string.Empty;
-        int input;
+        int input = 5;
+        bool isInRange = false;
 
         //try-parse is the var you are checking and then an output var if it passes. So input becomes the number if it passes the parse.
-        while ((!int.TryParse(userInput, out input) && input < rangeLow) || input > rangeHigh)
+        while (!isInRange)
         {
-            Console.WriteLine(
-                $"That is not a number or is out of range. Please input a number between {rangeLow} and {rangeHigh}.");
-            userInput = Console.ReadLine() ?? string.Empty;
+            if (!int.TryParse(userInput, out input))
+            {
+                Console.WriteLine(
+                    $"That is not a number. Please input a number between {rangeLow} and {rangeHigh}.");
+                userInput = Console.ReadLine() ?? string.Empty;
+            }
+            else if(input >= rangeHigh || input <= rangeLow)
+            {
+                Console.WriteLine(
+                    $"That number is not in range. Please input a number between {rangeLow} and {rangeHigh}.");
+                userInput = Console.ReadLine() ?? string.Empty;
+            }
+            else
+            {
+                Console.WriteLine($"Your number is {input}.");
+                isInRange = true;
+            }
         }
-
         return input;
     }
 

@@ -48,24 +48,34 @@ void DecideTeams()
         {
             Console.WriteLine("That is not an option. Please choose X or O");
             uinput =
-                InputUtils.GetStringToLower("Do you want to be X or O?",
-                    "That is not an option. Please choose X or O.");
+                InputUtils.GetStringToLower("Do you want to be X or O?", "That is not an option. Please choose X or O.");
         }
 }
 
 //We're going to use an array/list to keep track of previous choices. If they number is in the array then we ask for a new guess.
-List<int> picked = new();
+List<int> chosen = new();
 
-int UserChoices()
+int CheckChoice()
 {
-    bool pickNum = false;
+    bool pickedNum = false;
     int userChoice = InputUtils.GetIntInRange("What position would you like to use? 1-9", 1, 9);
 
-    if (picked.Contains(userChoice))
+    while (pickedNum == false)
     {
-        userChoice = InputUtils.GetIntInRange("That choice has already been picked. Please chose another.", 1, 9);
+        if (chosen.Contains(userChoice))
+        {
+            userChoice = InputUtils.GetIntInRange("That choice has already been picked. Please chose another.", 1, 9);
+        }
+        else
+        {
+            chosen.Add(userChoice);
+            pickedNum = true;
+        }
     }
 
     return userChoice;
 }
+
+CheckChoice();
+
 
