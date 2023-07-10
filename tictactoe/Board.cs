@@ -18,4 +18,12 @@ internal class Board
         _team1 = team1;
         _team2 = team2;
     }
+
+    public List<string> DrawBoard()
+    {
+        List<string> rowOne = new() {"-", "1","-","2", "=","3","-"};
+        List<string> rowTwo = new() {"-", "4","-","5", "=","6","-"};
+        List<string> rowThree = new() {"-", "7","-","8", "=","9","-"};
+
+    }
 }
