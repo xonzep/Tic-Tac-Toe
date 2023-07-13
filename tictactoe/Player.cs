@@ -2,14 +2,7 @@ namespace tictactoe;
 
 public class Player
 {
-    private int _choice;
-    
-    public Player()
-    {
-        
-    }
-    
-   public void DecideTeams()
+    public void DecideTeams()
     {
         char team1;
         char team2;
@@ -40,7 +33,7 @@ public class Player
             }
     }
 
-    //We're going to use an array/list to keep track of previous choices. If they number is in the array then we ask for a new guess.
+    //We're going to use an array/list to keep track of previous choices. If the number is in the array then we ask for a new guess.
     List<int> chosen = new();
     public int CheckChoice()
     {

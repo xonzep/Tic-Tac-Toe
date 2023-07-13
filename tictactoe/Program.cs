@@ -24,5 +24,4 @@ using tictactoe;
 
 
 
-
-
+Board.DrawBoard();

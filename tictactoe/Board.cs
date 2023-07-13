@@ -6,24 +6,49 @@
 
 namespace tictactoe;
 
-internal class Board
+public class Board
 {
-    private string _team1;
-    private string _team2;
-    private int _userInput;
-
-    public Board(int uPlace, string team1, string team2)
+    private string _user;
+    public Board(string user)
     {
-        _userInput = uPlace;
-        _team1 = team1;
-        _team2 = team2;
+        user = _user;
     }
 
-    public List<string> DrawBoard()
+    
+    private static string[] _cellNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private string PlaceChoice(Player teamOne, Player teamTwo)
     {
-        List<string> rowOne = new() {"-", "1","-","2", "=","3","-"};
-        List<string> rowTwo = new() {"-", "4","-","5", "=","6","-"};
-        List<string> rowThree = new() {"-", "7","-","8", "=","9","-"};
+        teamOne = new Player();
+        teamTwo = new Player();
+        foreach (string cell in _cellNum)
+        {
+            if (_cellNum.Contains(teamOne.CheckChoice().ToString()))
+            {
+                return "test";
+            }
+        }
+
+        return "0";
+    }
+    
+   
+
+    
+    
+    
+    public static void DrawBoard()
+    {
+        const string cells = "  {0}  |  {1}  |  {2}  ";
+        const string line = "----------------";
+        const int boardSize = 9;
+        const int row = 3;
+
+        for (int i = 0; i < boardSize; i += row)
+        {
+           Console.WriteLine(cells, _cellNum[i], _cellNum[i+1], _cellNum[i+2]);
+           Console.WriteLine(line);
+        }
 
     }
+
 }
