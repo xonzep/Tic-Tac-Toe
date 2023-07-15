@@ -2,39 +2,22 @@ namespace tictactoe;
 
 public class Player
 {
-    public void DecideTeams()
+    public void GetNames()
     {
-        char team1;
-        char team2;
-        bool askAgain = true;
-        string uinput =
-            InputUtils.GetStringToLower("Do you want to be X or O?", "That is not an option. Please choose X or O.");
-
-        while (askAgain)
-            if (uinput == "x")
-            {
-                Console.WriteLine("Player 1 is team X. Player 2 is team O");
-                team1 = 'X';
-                team2 = 'O';
-                askAgain = false;
-            }
-            else if (uinput == "o")
-            {
-                Console.WriteLine("Player 1 is team O. Player 2 is team X");
-                team1 = 'O';
-                team2 = 'X';
-                askAgain = false;
-            }
-            else
-            {
-                Console.WriteLine("That is not an option. Please choose X or O");
-                uinput =
-                    InputUtils.GetStringToLower("Do you want to be X or O?", "That is not an option. Please choose X or O.");
-            }
+        //How do we assign the symbol to the players? We have the input of their teams. How do we take that as our point to the symbol?
+        
+       string playerOne =  InputUtils.GetStringToLower("Who will go first? You will be X. Please input your name.", "That is not an option.");
+       
+       string playerTwo =
+           InputUtils.GetStringToLower("Player Two, what is your name? You will be O. Please input your name.",
+               "That is not an option.");
+       
     }
 
+    
+
     //We're going to use an array/list to keep track of previous choices. If the number is in the array then we ask for a new guess.
-    List<int> chosen = new();
+    List<int> _chosen = new();
     public int CheckChoice()
     {
         
@@ -43,13 +26,13 @@ public class Player
 
         while (pickedNum == false)
         {
-            if (chosen.Contains(userChoice))
+            if (_chosen.Contains(userChoice))
             {
                 userChoice = InputUtils.GetIntInRange("That choice has already been picked. Please chose another.", 1, 9);
             }
             else
             {
-                chosen.Add(userChoice);
+                _chosen.Add(userChoice);
                 pickedNum = true;
             }
         }

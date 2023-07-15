@@ -15,26 +15,14 @@ public class Board
     }
 
     
+    
     private static string[] _cellNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    private string PlaceChoice(Player teamOne, Player teamTwo)
+
+    
+    private string ReturnSymbol(string team)
     {
-        teamOne = new Player();
-        teamTwo = new Player();
-        foreach (string cell in _cellNum)
-        {
-            if (_cellNum.Contains(teamOne.CheckChoice().ToString()))
-            {
-                return "test";
-            }
-        }
-
-        return "0";
+        
     }
-    
-   
-
-    
-    
     
     public static void DrawBoard()
     {
