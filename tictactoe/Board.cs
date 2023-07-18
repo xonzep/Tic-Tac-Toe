@@ -4,24 +4,43 @@
  */
 
 
+
 namespace tictactoe;
 
 public class Board
 {
-    private string _user;
-    public Board(string user)
+    private int _choice;
+    private int _team;
+    public Board(int choice, int team)
     {
-        user = _user;
+        _choice = choice;
+        _team = team;
     }
 
     
     
     private static string[] _cellNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
-    
-    private string ReturnSymbol(string team)
+    public void GetSymbol()
     {
+        string userInput = _choice.ToString();
+        //We get the index of the number.
+        int contain = Array.IndexOf(_cellNum, userInput);
+        //then we do something if that number does exist in our array.
+
+        if (contain == -1)
+        {
+            Console.WriteLine("Out of range.");
+        }
         
+        if (_team == 1)
+        {
+            _cellNum[contain] = "X";
+        }
+        else if (_team == 2)
+        {
+            _cellNum[contain] = "O";
+        }
     }
     
     public static void DrawBoard()

@@ -22,6 +22,16 @@
 using tictactoe;
 
 
+void GameLoop()
+{
+ bool play = true;
+ Player player = new();
 
+ while (play)
+ {
+  player.ApplyChoice();
+ 
+ }
+}
 
-Board.DrawBoard();
+GameLoop();

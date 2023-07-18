@@ -18,7 +18,7 @@ public static class InputUtils
                     $"That is not a number. Please input a number between {rangeLow} and {rangeHigh}.");
                 userInput = Console.ReadLine() ?? string.Empty;
             }
-            else if(input >= rangeHigh || input <= rangeLow)
+            else if(input > rangeHigh || input < rangeLow)
             {
                 Console.WriteLine(
                     $"That number is not in range. Please input a number between {rangeLow} and {rangeHigh}.");
