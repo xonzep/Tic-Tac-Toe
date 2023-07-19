@@ -30,9 +30,16 @@ void GameLoop()
     while (play)
     {
         int currentTeam = player.MakeMove();
-
-        if (Board.CheckWinCondition())
+        
+        if (Player.CheckDraw())
         {
+            Board.DrawBoard();
+            Console.WriteLine("It's a DRAW!");
+            play = false;
+        }
+        else if (Player.CheckWinCondition())
+        {
+            Board.DrawBoard();
             Console.WriteLine("Team " + (currentTeam == Player.POne ? "O" : "X") + " wins!");
 
             play = false;

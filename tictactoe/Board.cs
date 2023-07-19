@@ -18,13 +18,13 @@ public class Board
 
     
     
-    private static readonly string[] _cellNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    public static readonly string[] CellNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     public void GetSymbol()
     {
         string userInput = _choice.ToString();
         //We get the index of the number.
-        int contain = Array.IndexOf(_cellNum, userInput);
+        int contain = Array.IndexOf(CellNum, userInput);
         //then we do something if that number does exist in our array.
 
         if (contain == -1)
@@ -34,11 +34,11 @@ public class Board
         
         if (_team == 1)
         {
-            _cellNum[contain] = "X";
+            CellNum[contain] = "X";
         }
         else if (_team == 2)
         {
-            _cellNum[contain] = "O";
+            CellNum[contain] = "O";
         }
     }
     
@@ -51,31 +51,12 @@ public class Board
 
         for (int i = 0; i < boardSize; i += row)
         {
-            Console.WriteLine(cells, _cellNum[i], _cellNum[i+1], _cellNum[i+2]);
+            Console.WriteLine(cells, CellNum[i], CellNum[i+1], CellNum[i+2]);
             Console.WriteLine(line);
         }
 
     }
     
-    private static bool CheckLine(int index1, int index2, int index3)
-    {
-        return _cellNum[index1] == _cellNum[index2] && _cellNum[index2] == _cellNum[index3];
-    }
-    
-    public static bool CheckWinCondition()
-    {
-        // Check row
-        if (CheckLine(0, 1, 2) || CheckLine(3, 4, 5) || CheckLine(6, 7, 8))
-            return true;
-
-        // Check column
-        if (CheckLine(0, 3, 6) || CheckLine(1, 4, 7) || CheckLine(2, 5, 8))
-            return true;
-
-        // Check diagonal
-        return CheckLine(0, 4, 8) || CheckLine(2, 4, 6);
-    }
-
    
-
+    
 }
