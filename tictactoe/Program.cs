@@ -24,14 +24,20 @@ using tictactoe;
 
 void GameLoop()
 {
- bool play = true;
- Player player = new();
+    bool play = true;
+    Player player = new();
 
- while (play)
- {
-  player.ApplyChoice();
- 
- }
+    while (play)
+    {
+        int currentTeam = player.MakeMove();
+
+        if (Board.CheckWinCondition())
+        {
+            Console.WriteLine("Team " + (currentTeam == Player.POne ? "O" : "X") + " wins!");
+
+            play = false;
+        }
+    }
 }
 
 GameLoop();

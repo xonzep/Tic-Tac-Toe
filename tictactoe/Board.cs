@@ -3,14 +3,13 @@
  * We will need to check if we are getting the expected response. 
  */
 
-
-
 namespace tictactoe;
 
 public class Board
 {
-    private int _choice;
-    private int _team;
+    private readonly int _choice;
+    private readonly int _team;
+    
     public Board(int choice, int team)
     {
         _choice = choice;
@@ -19,7 +18,7 @@ public class Board
 
     
     
-    private static string[] _cellNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private static readonly string[] _cellNum = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     public void GetSymbol()
     {
@@ -52,10 +51,31 @@ public class Board
 
         for (int i = 0; i < boardSize; i += row)
         {
-           Console.WriteLine(cells, _cellNum[i], _cellNum[i+1], _cellNum[i+2]);
-           Console.WriteLine(line);
+            Console.WriteLine(cells, _cellNum[i], _cellNum[i+1], _cellNum[i+2]);
+            Console.WriteLine(line);
         }
 
     }
+    
+    private static bool CheckLine(int index1, int index2, int index3)
+    {
+        return _cellNum[index1] == _cellNum[index2] && _cellNum[index2] == _cellNum[index3];
+    }
+    
+    public static bool CheckWinCondition()
+    {
+        // Check row
+        if (CheckLine(0, 1, 2) || CheckLine(3, 4, 5) || CheckLine(6, 7, 8))
+            return true;
+
+        // Check column
+        if (CheckLine(0, 3, 6) || CheckLine(1, 4, 7) || CheckLine(2, 5, 8))
+            return true;
+
+        // Check diagonal
+        return CheckLine(0, 4, 8) || CheckLine(2, 4, 6);
+    }
+
+   
 
 }
